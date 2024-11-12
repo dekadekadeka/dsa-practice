@@ -1,3 +1,4 @@
+// Cracking The Coding Interview - Arrays problem 1.2
 // Again, do not make assumptions about which kind of string. Ask if ASCII or Unicode.
 // Ask if spaces or special chars count.
 
