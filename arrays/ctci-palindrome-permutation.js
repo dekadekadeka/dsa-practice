@@ -3,10 +3,9 @@
 // (a rearrangement of the same letters that reads the same forwards and backwards)
 // Ignore casing and non-letter chars.
 // The palindromes do not have to be actual dictionary words.
-// str: String
-const palindromePermutation = str => {
-  // remove non-letter chars first
-  const onlyLettersStr = str.replace(/[^a-z]+/gi, '');
+
+// const getCharMap: (onlyLettersStr: String) => {}
+const getCharMap = onlyLettersStr => {
   const charCount = {};
 
   // first, count each of the letters in the string
@@ -20,12 +19,15 @@ const palindromePermutation = str => {
 
   }
 
-  // then, check if the result itself is a palindrome
-  // if each count is an even number (meaning there are matching pairs),
-  // OR if one count is 1, and all the rest are even numbers (single letter in the middle with all the rest having pairs)
-  // then the word is a palindrome
+  return charCount;
+}
 
-  // get the counts from the charCount object
+// if each count is an even number (meaning there are matching pairs),
+// OR if one count is 1, and all the rest are even numbers (single letter in the middle with all the rest having pairs)
+// then the word is a palindrome
+// const checkPalindrome: (charCount: {}) => boolean
+const checkPalindrome = charCount => {
+  // get the counts (values) from the charCount object in an array
   const valuesArr = Object.values(charCount)
   let singleCount = 0;
 
@@ -45,6 +47,17 @@ const palindromePermutation = str => {
   }
 
   return true;
+}
+
+// const palindromePermutation: (str: String) => boolean
+const palindromePermutation = str => {
+  // remove non-letter chars first
+  const onlyLettersStr = str.replace(/[^a-z]+/gi, '');
+  // make a hash map of how many times a letter appears in the string
+  const charCount = getCharMap(onlyLettersStr);
+
+  // then, check if the result is a palindrome from the hash map
+  return checkPalindrome(charCount);
 }
 
 console.log(palindromePermutation('tact coa99')); // true
