@@ -1,8 +1,8 @@
 // Given a 2D array with inner arrays containing connection status and 2 names,
 // return an array containing the names with a minimum of num connections.
 
-// connections - 2D array showing whether 2 names connected/disconnected
-// num - number of minimum connections
+// connections: String[][] - 2D array showing whether 2 names connected/disconnected
+// num: Number - number of minimum connections
 const countConnections = (connections, num) => {
   const connectionsHash = {};
   const result = [];
