@@ -8,29 +8,15 @@ const countConnections = (connections, num) => {
   const result = [];
 
   for (let i = 0; i < connections.length; i++) {
-    if (connections[i][0] === 'CONNECT') {
-      if (connectionsHash[connections[i][1]]) {
-        connectionsHash[connections[i][1]] += 1;
-      } else {
-        connectionsHash[connections[i][1]] = 1;
-      }
+    connections[i][0] === 'CONNECT' && (
+      connectionsHash[connections[i][1]] ? connectionsHash[connections[i][1]] += 1 : connectionsHash[connections[i][1]] = 1,
+      connectionsHash[connections[i][2]] ? connectionsHash[connections[i][2]] += 1 : connectionsHash[connections[i][2]] = 1
+    )
 
-      if (connectionsHash[connections[i][2]]) {
-        connectionsHash[connections[i][2]] += 1;
-      } else {
-        connectionsHash[connections[i][2]] = 1;
-      }
-    }
-
-    if (connections[i][0] === 'DISCONNECT') {
-      if (connectionsHash[connections[i][1]]) {
-        connectionsHash[connections[i][1]] -= 1;
-      }
-
-      if (connectionsHash[connections[i][2]]) {
-        connectionsHash[connections[i][2]] -= 1;
-      }
-    }
+    connections[i][0] === 'DISCONNECT' && (
+      connectionsHash[connections[i][1]] && (connectionsHash[connections[i][1]] -= 1),
+      connectionsHash[connections[i][2]] && (connectionsHash[connections[i][2]] -= 1)
+    )
   }
 
   for (const [k, v] of Object.entries(connectionsHash)) {
