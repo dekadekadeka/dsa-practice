@@ -20,5 +20,5 @@ function longestWithSet(s1, s2) {
   return [...new Set(s1 + s2)].sort().join('');
 }
 
-// longest('aretheyhere', 'yestheyarehere') // returns 'aehrsty'
+longest('aretheyhere', 'yestheyarehere') // returns 'aehrsty'
 longestWithSet('aretheyhere', 'yestheyarehere') // returns 'aehrsty'
