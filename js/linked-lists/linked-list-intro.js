@@ -16,7 +16,7 @@ class LinkedList {
   }
 
   // Append: Insert a node into the end of the Linked List
-  append (data) {
+  append(data) {
     // Create a new Node using the class above
     const newNode = new Node(data);
 
@@ -47,7 +47,7 @@ class LinkedList {
   }
 
   // Add a new node to the beginning of the Linked List
-  prepend (data) {
+  prepend(data) {
     // first create a new Node with the data given
     const newNode = new Node(data);
     // then assign the current head to be the new Node's .next...
@@ -59,7 +59,7 @@ class LinkedList {
   // and replacing the old this.head with the new Node)
 
   // Remove the first occurrence of a node with the given data
-  delete (data) {
+  delete(data) {
     // If there is no head, the Linked List is empty
     if (!this.head) return;
 
