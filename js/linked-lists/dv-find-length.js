@@ -1,12 +1,12 @@
 class Node {
-  constructor (data) {
+  constructor(data) {
     this.data = data;
     this.next = null;
   }
 }
 
 class LinkedList {
-  constructor () {
+  constructor() {
     this.head = null;
   }
 

@@ -3,7 +3,7 @@
 
 // basic Node with space for the data and a reference to the next Node
 class Node {
-  constructor (data) {
+  constructor(data) {
     this.data = data;
     this.next = null;
   }
@@ -11,7 +11,7 @@ class Node {
 
 // the LinkedList itself
 class LinkedList {
-  constructor () {
+  constructor() {
     this.head = null;
   }
 
