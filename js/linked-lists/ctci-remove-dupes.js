@@ -43,28 +43,56 @@ class LinkedList {
 
   // the real reason why you came here! :)
   removeDuplicates() {
-    if (!this.head) return 'The linked list is empty';
-    if (!this.head.next) return 'The linked list only contains one element';
-
     // make a hash map to keep track of how many times an element appears on the list
     const elementCount = {};
     let current = this.head;
+    // keep track of which Node came directly before the current
+    let previous = null;
 
     while (current !== null) {
-      // add the element and its occurrence count to the hash map
-      elementCount[current.data] ? elementCount[current.data]++ : elementCount[current.data] = 1;
-
-      // if the element's count is greater than one, meaning it's a duplicate...
-      if (elementCount[current.data] > 1) {
-        // assign the next Node's data to the current data,
-        // and assign the next Node's next to the current next,
-        // essentially overwriting the current with the next, therefore deleting the current.
-        current.data = current.next.data;
+      // if the element is already present in the hash map, meaning it's a duplicate...
+      if (elementCount[current.data]) {
+        // assign the previous Node's data to the current data (go back one Node),
+        current = previous;
+        // and assign that Node's next to that of two nodes ahead,
+        // overwriting the "current" Node with the one ahead,
+        // therefore deleting the Node currently being checked.
+        // (go backwards one Node, look to the Node two spaces ahead,
+        // and replace the Node one step behind with the one one step ahead)
         current.next = current.next.next;
       } else {
-        // if the element is still only present once, keep traversing through the linked list
-        current = current.next;
+        // add the element to the hash map
+        // (no need to count, we just need to keep track of it already existing)
+        elementCount[current.data] = 1;
+        // set the current to be the new previous for the next iteration
+        previous = current;
       }
+      // keep traversing through the linked list
+      current = current.next;
+    }
+  }
+
+  // "No Buffer Allowed" solution
+  removeDuplicatesCursor() {
+    let current = this.head;
+
+    while (current !== null) {
+      // set the cursor to be the same as the current at the TOP of the while loop
+      let cursor = current;
+      // if the next Node is not null...
+      while (cursor.next !== null) {
+        // AND if the next Node's data is the same as the current data...
+        if (cursor.next.data === current.data) {
+          // then set the cursor/next Node's 'next' to the next Node's next,
+          // overwriting the next Node with the next next Node
+          cursor.next = cursor.next.next;
+        } else {
+          // otherwise, move the cursor to the next Node
+          cursor = cursor.next;
+        }
+      }
+      // set current to the next Node after checking against all the other Nodes
+      current = current.next;
     }
   }
 }
@@ -77,5 +105,7 @@ linkedList.append(69);
 linkedList.append(35);
 linkedList.append(420);
 console.log(linkedList.print()); // 5 -> 35 -> 69 -> 35 -> 420
+// comment out whichever one you don't want to use
 linkedList.removeDuplicates();
+// linkedList.removeDuplicatesCursor();
 console.log(linkedList.print()); // 5 -> 35 -> 69 -> 420 - removed the second occurrence of 35
