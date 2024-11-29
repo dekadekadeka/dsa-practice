@@ -26,11 +26,11 @@ const stringifyRecursive = (list) => {
   // while the list itself, or the 'next' Node passed in is not null...
   while(list !== null) {
     // return a string with the data pointing to a call to the next node
-    return `${list.data} -> ${stringify(list.next)}`;
+    return `${list.data} -> ${stringifyRecursive(list.next)}`;
   }
   // Once you finally get to the end of the Linked List...
   return 'null';
-  // you will return the string 'null' PLUS all the other calls to return inside the while loop (on line 15)
+  // you will return the string 'null' PLUS all the other calls to return inside the while loop (on line 29)
   // right behind it, working backwards, creating a string with all the previous data
   // pointing to its next element in the right order
 }
