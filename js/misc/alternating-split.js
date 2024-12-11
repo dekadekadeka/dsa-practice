@@ -2,9 +2,8 @@
 function encrypt(text, n) {
   // set the initial result to the original text to begin with
   let result = text;
-  if (result === null) return result;
 
-  while (n > 0) {
+  while (n > 0 && result !== null) {
     // reset to empty strings between iterations
     let odd = '';
     let even = '';
@@ -31,17 +30,17 @@ function decrypt(encryptedText, n) {
   let result = encryptedText;
 
   while (n > 0) {
-    let odd = result.slice(0, result.length / 2);
-    let even = result.slice(result.length / 2, result.length);
+    let firstHalf = result.slice(0, result.length / 2);
+    let secondHalf = result.slice(result.length / 2, result.length);
     let tempResult = '';
 
     for (let i = 0; i < result.length / 2; i++) {
-      if (even[i] !== undefined) {
-        tempResult += even[i];
+      if (secondHalf[i]) {
+        tempResult += secondHalf[i];
       }
 
-      if (odd[i] !== undefined) {
-        tempResult += odd[i];
+      if (firstHalf[i]) {
+        tempResult += firstHalf[i];
       }
     }
 
@@ -52,7 +51,7 @@ function decrypt(encryptedText, n) {
   return result;
 }
 
-decrypt("This is a test!", 0); // return 'This is a test!'
+// decrypt("This is a test!", 0); // return 'This is a test!'
 decrypt("hsi  etTi sats!", 1); // return 'This is a test!'
 decrypt("s eT ashi tist!", 2); // return 'This is a test!'
 decrypt("itn n illBnagadCtai", 1); // return 'Bintang and Citlali'
