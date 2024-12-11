@@ -1,9 +1,10 @@
 // https://www.codewars.com/kata/5ae62fcf252e66d44d00008e
 function expressionsMatter(a, b, c) {
-  return // highest achievable result
+  // the spread operator/array isn't actually necessary
+  return Math.max(...[a + b + c, a * b * c, (a * b) + c, a + (b * c), (a + b) * c, a * (b + c)]);
 }
 
-expressionsMatter(2, 1, 2);
+expressionsMatter(2, 1, 2); // return 6
 expressionsMatter(2, 1, 1);
 expressionsMatter(1, 1, 1);
 expressionsMatter(5, 1, 3);
