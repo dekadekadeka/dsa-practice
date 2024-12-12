@@ -23,3 +23,9 @@ const perry = new Dog('Perry', 'Chihuahua');
 bintang.boop();
 citlali.boop();
 perry.boop();
+
+// Swap numbers with bitwise XOR! No temp value needed :)
+// https://en.wikipedia.org/wiki/XOR_swap_algorithm
+// nArr[i] = nArr[i + 1] ^ nArr[i];
+// nArr[i + 1] = nArr[i] ^ nArr[i + 1];
+// nArr[i] = nArr[i + 1] ^ nArr[i];
