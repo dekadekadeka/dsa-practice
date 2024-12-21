@@ -14,5 +14,5 @@ const maxLengthDiff = (a1, a2) => {
 const s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
 const s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
 
-maxLengthDiff([], []) // returns -1 if one or both arrays are empty
-// maxLengthDiff(s1, s2) // returns 13
+maxLengthDiff([], []); // returns -1 if one or both arrays are empty
+maxLengthDiff(s1, s2); // returns 13
