@@ -24,7 +24,7 @@ const stockList = (books, categories) => {
   }
 
   return resultArr.join(' - ');
-  }
+}
 
 // return "(A : 0) - (B : 1290) - (C : 515) - (D : 600)"
 stockList(["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"], ["A", "B", "C", "D"]);
