@@ -1,6 +1,13 @@
 // https://www.codewars.com/kata/66fc9ca2e6d1d0e9cc2e4a4c, not available in JS yet!
 const countStreets = (streets, drivers) => {
-  return drivers.map(crossStreets => Math.abs(streets.indexOf(crossStreets[0]) - streets.indexOf(crossStreets[1])) - 1);
+  // for efficiency, create a hash with each street name and its index
+  const streetsHash = {};
+
+  for (let i = 0; i < streets.length; i++) {
+    streetsHash[streets[i]] = i;
+  }
+
+  return drivers.map(crossStreets => Math.abs(streetsHash[crossStreets[0]] - streetsHash[crossStreets[1]]) - 1);
 }
 
 countStreets(["first", "second", "third", "fourth", "fifth", "sixth", "seven"],
