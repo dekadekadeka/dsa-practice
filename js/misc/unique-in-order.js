@@ -7,6 +7,9 @@ const uniqueInOrder = iterable => {
   const regex = new RegExp([...new Set(iterable)].map(l => `(${l}+)`).join('|'), 'g');
   // check if each char is a number; if so, return it as a Number
   return result.match(regex).map(a => /\d/.test(a) ? Number(a[0]) : a[0]);
+
+  // using filter - one-line solution :)
+  // return [...iterable].filter((a, i) => a !== iterable[i - 1]);
 }
 
 uniqueInOrder('AAAABBBCCDAABBB'); // return ['A', 'B', 'C', 'D', 'A', 'B']
