@@ -59,3 +59,26 @@ adjacentElementsProduct([1, 5, 10, 9]); // return 90
 adjacentElementsProduct([3, 6, -2, -5, 7, 3]); // return 21
 adjacentElementsProduct([1, 2, 3, 0]); // return 6
 
+// https://www.codewars.com/kata/5a651865fd56cb55760000e0
+const arrayLeaders = numbers => {
+  const result = [];
+
+  if (numbers[numbers.length - 1] > 0) {
+    result.push(numbers[numbers.length - 1]);
+  }
+
+  numbers.reduceRight((a, c) => {
+    if (a < c) {
+      result.push(c);
+    }
+    return a + c;
+  });
+
+  return result.reverse();
+}
+
+arrayLeaders([5, 2, -1]); // return [5, 2]
+arrayLeaders([1,2,3,4,0]); // return [4]
+arrayLeaders([16,17,4,3,5,2]); // return [17,5,2]
+arrayLeaders([-1,-29,-26,-2]); // return [-1]
+arrayLeaders([0,-1,-29,3,2]); // return  [0,-1,3,2]
