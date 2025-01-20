@@ -82,3 +82,23 @@ arrayLeaders([1,2,3,4,0]); // return [4]
 arrayLeaders([16,17,4,3,5,2]); // return [17,5,2]
 arrayLeaders([-1,-29,-26,-2]); // return [-1]
 arrayLeaders([0,-1,-29,3,2]); // return  [0,-1,3,2]
+
+// https://www.codewars.com/kata/5a7893ef0025e9eb50000013
+const maxGap = numbers => {
+  let maxDiff = 0;
+  numbers.sort((a, b) => b - a);
+
+  for (let i = 0; i < numbers.length - 1; i++) {
+    if (numbers[i] - numbers[i + 1] > maxDiff) {
+      maxDiff = numbers[i] - numbers[i + 1];
+    }
+  }
+
+  return maxDiff;
+}
+
+maxGap([13,10,2,9,5]); // return 4
+maxGap([13,3,5]); // return 8
+maxGap([24,299,131,14,26,25]); // return 168
+maxGap([-3,-27,-4,-2]); // return 23
+maxGap([-7,-42,-809,-14,-12]); // return 767
