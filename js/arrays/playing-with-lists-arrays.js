@@ -102,3 +102,19 @@ maxGap([13,3,5]); // return 8
 maxGap([24,299,131,14,26,25]); // return 168
 maxGap([-3,-27,-4,-2]); // return 23
 maxGap([-7,-42,-809,-14,-12]); // return 767
+
+// https://www.codewars.com/kata/5a905c2157c562994900009d
+const productArray = numbers => {
+  return numbers.map((_, i, arr) => {
+    // arr.toSpliced(i, 1) does not work on codewars, so I must do it the old-fashioned way
+    const temp = [...arr.slice(0, i), ...arr.slice(i + 1)];
+    return temp.reduce((a, c) => {
+      return a * c;
+    });
+  });
+}
+
+productArray([12,20]); // return [20,12]
+productArray([3,27,4,2]); // return [216,24,162,324]
+productArray([13,10,5,2,9]); // return [900,1170,2340,5850,1300]
+productArray([16,17,4,3,5,2]); // return [2040,1920,8160,10880,6528,16320]
