@@ -30,6 +30,15 @@ maxProduct([8, 6, 4, 6], 3); // return 288
 maxProduct([10, 2, 3, 8, 1, 10, 4], 5); // return 9600
 maxProduct([13, 12, -27, -302, 25, 37, 133, 155, -14], 5); // return 247895375
 
+// https://www.codewars.com/kata/5a512f6a80eba857280000fc
+const nthSmallest = (arr, pos) => {
+  return arr.sort((a, b) => a - b)[pos - 1];
+}
+
+nthSmallest([3,1,2], 2); // return 2
+nthSmallest([15,20,7,10,4,3], 3); // return 7
+nthSmallest([-5,-1,-6,-18], 4); // return -1
+
 // https://www.codewars.com/kata/5a4138acf28b82aa43000117
 const adjacentElementsProduct = array => {
   let maxProd = Number.MIN_SAFE_INTEGER;
