@@ -170,3 +170,19 @@ minimumNumber([5,2]); // return 0
 minimumNumber([1,1,1]); // return 0
 minimumNumber([2,12,8,4,6]); // return 5
 minimumNumber([50,39,49,6,17,28]); // return 2
+
+// https://www.codewars.com/kata/5aa1bcda373c2eb596000112
+const maxTriSum = numbers => {
+  const unique = [...new Set(numbers)];
+
+  return unique.sort((a, b) => a - b)
+    .slice(-3)
+    .reduce((a, c) => a + c);
+}
+
+maxTriSum([3,2,6,8,2,3]); // return 17
+maxTriSum([2,9,13,10,5,2,9,5]); // return 32
+maxTriSum([2,1,8,0,6,4,8,6,2,4]); // return 18
+maxTriSum([-3,-27,-4,-2,-27,-2]); // return -9
+maxTriSum([-14,-12,-7,-42,-809,-14,-12]); // return -33
+maxTriSum([-13,-50,57,13,67,-13,57,108,67]); // return 232
