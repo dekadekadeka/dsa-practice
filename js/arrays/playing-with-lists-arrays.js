@@ -137,3 +137,36 @@ minimumSteps([4, 6, 3], 7); // return 1
 minimumSteps([8, 9, 10, 4, 2], 23); // return 3
 minimumSteps([19, 98, 69, 28, 75, 45, 17, 98, 67], 464); // return 8
 minimumSteps([4, 6, 3], 2); // return 0
+
+// https://www.codewars.com/kata/5a946d9fba1bb5135100007c
+const isPrime = num => {
+  if (num < 2) return false;
+  if (num === 2) return true; // specifically allow 2, as it is the only even prime number
+  if (num % 2 === 0) return false; // automatically exclude any other even numbers
+
+  // begin at 3, and increment by 2 to only check against odd numbers
+  for (let i = 3; i <= Math.sqrt(num); i+= 2) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+const minimumNumber = numbers => {
+  const sum = numbers.reduce((a, c) => a + c);
+
+  // find the closest prime number equal to or greater than the sum
+  for (let i = sum; i <= sum * 2; i++) {
+    if (isPrime(i)) {
+      return i - sum;
+    }
+  }
+}
+
+minimumNumber([3,1,2]); // return 1
+minimumNumber([5,2]); // return 0
+minimumNumber([1,1,1]); // return 0
+minimumNumber([2,12,8,4,6]); // return 5
+minimumNumber([50,39,49,6,17,28]); // return 2
