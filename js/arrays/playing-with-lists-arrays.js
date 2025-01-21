@@ -186,3 +186,18 @@ maxTriSum([2,1,8,0,6,4,8,6,2,4]); // return 18
 maxTriSum([-3,-27,-4,-2,-27,-2]); // return -9
 maxTriSum([-14,-12,-7,-42,-809,-14,-12]); // return -33
 maxTriSum([-13,-50,57,13,67,-13,57,108,67]); // return 232
+
+// https://www.codewars.com/kata/5abd66a5ccfd1130b30000a9
+const rowWeights = array => {
+  const even = array.filter((_, i) => i % 2 === 0).reduce((a, c) => a + c, 0);
+  const odd = array.filter((_, i,) => i % 2 !== 0).reduce((a, c) => a + c, 0);
+
+  return [even, odd];
+}
+
+rowWeights([80]); // return [80,0]
+rowWeights([100,50]); // return [100,50]
+rowWeights([50,60,70,80]); // return [120,140]
+rowWeights([13,27,49]); // return [62,27]
+rowWeights([70,58,75,34,91]); // return [236,92]
+rowWeights([29,83,67,53,19,28,96]); // return [211,164]
