@@ -2,19 +2,28 @@
 const chooseBestSum = (t, k, ls) => {
   if (ls.length < k) return null;
 
-  // make a cursor for the second element
-  let cursor = 1;
+  let maxSum = 0;
 
-  for (let i = 0; i <= ls.length; i++) {
-    // current (ls[i]) + cursor(ls[cursor]) + cursor + 1
-    // cursor + 1 can be the inner loop
+  for (let i = 0; i <= ls.length - k; i++) {
+    // make a cursor for the second element
+    let cursor = i + 1;
+
     for (let j = cursor + 1; j <= ls.length - 1; j++) {
-      // cursor + 1 is now ls[j]
       console.log([ls[i], ls[cursor], ls[j]], ls[i] + ls[cursor] + ls[j]);
-    }
+      let sum = ls[i] + ls[cursor] + ls[j];
 
-    cursor++;
+      if (maxSum < sum && sum <= t) {
+        maxSum = sum;
+      }
+
+      if (j === ls.length - 1) {
+        cursor++;
+        j = cursor;
+      }
+    }
   }
+
+  return maxSum;
 }
 
 let ts = [50, 55, 57, 58, 60];
