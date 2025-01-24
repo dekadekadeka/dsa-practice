@@ -8,15 +8,15 @@ const chooseBestSum = (t, k, ls) => {
     // make a cursor for the second element
     let cursor = i + 1;
 
-    for (let j = cursor + 1; j <= ls.length - 1; j++) {
-      console.log([ls[i], ls[cursor], ls[j]], ls[i] + ls[cursor] + ls[j]);
-      let sum = ls[i] + ls[cursor] + ls[j];
+    for (let j = cursor + 1; j <= ls.length - (k - 2); j++) {
+      let trip = ls.slice(cursor, cursor + (k - 1));
+      let sum = [ls[i], ...trip].reduce((a, c) => a + c);
 
       if (maxSum < sum && sum <= t) {
         maxSum = sum;
       }
 
-      if (j === ls.length - 1) {
+      if (k <= 2 || j === ls.length - 1) {
         cursor++;
         j = cursor;
       }
@@ -26,7 +26,9 @@ const chooseBestSum = (t, k, ls) => {
   return maxSum;
 }
 
-let ts = [50, 55, 57, 58, 60];
+let ts = [91, 74, 73, 85, 73, 81, 87];
+chooseBestSum(331, 2, ts); // return 178
+ts = [50, 55, 57, 58, 60];
 chooseBestSum(174, 3, ts); // return 173
 ts = [50, 55, 56, 57, 58];
 chooseBestSum(163, 3, ts); // return 163
