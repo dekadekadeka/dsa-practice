@@ -2,8 +2,8 @@
 const pipeFix = numbers => {
   const result = [];
 
-  for (let i = 0; i <= numbers[numbers.length - 1]; i++) {
-    result.push(numbers[i] + i);
+  for (let i = numbers[0]; i <= numbers[numbers.length - 1]; i++) {
+    result.push(i);
   }
 
   return result;
