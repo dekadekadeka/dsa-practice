@@ -1,3 +1,4 @@
+# https://www.codewars.com/kata/595aa94353e43a8746000120
 def find_deleted_number(arr, mixed_arr)
   arr.reject { |num| mixed_arr.include? num }.first || 0
 end
