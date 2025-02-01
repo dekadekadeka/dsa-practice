@@ -1,15 +1,17 @@
 # https://www.codewars.com/kata/5544c7a5cb454edb3c000047
 def bouncing_ball(h, bounce, window)
-  return -1 if h < 0 || h < window
+  return -1 if h < 0 || h <= window
   return -1 if bounce < 0 || bounce >= 1
 
   # drop counts as 1
   drop = 1
+
   # each time the bounce is still above window, increase by 2
   while h >= window
     h = h * bounce
-    bounce = bounce * bounce
-    drop += 1
+    if h > window
+      drop += 2
+    end
   end
 
   drop
