@@ -20,3 +20,20 @@ end
 
 duty_free(12, 50, 1000) # return 166
 duty_free(17, 10, 500) # return 294
+
+# https://www.codewars.com/kata/544a54fd18b8e06d240005c0
+def find_smallest(numbers, to_return)
+  case to_return
+    when "value"
+      numbers.min
+    when "index"
+      numbers.index(numbers.min)
+  end
+end
+
+find_smallest([5,4,3,2,1],"value") # return 1)
+find_smallest([5,4,3,2,1],"index") # return 4)
+find_smallest([ 8, 0, 9],"index") # return 1)
+find_smallest([ 8, 0, 9],"value") # return 0)
+find_smallest([ 1, 1, 0, 0, 1, 1],"value") # return 0)
+find_smallest([ 1, 1, 0, 0, 1, 1],"index") # return 2)
