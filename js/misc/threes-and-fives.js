@@ -1,10 +1,11 @@
 // https://www.codewars.com/kata/5a905291fd57772be0000039
 // **to be completed, not all tests pass**
 threesAndFives=n=> {
-  console.log(Math.floor(Math.floor(n - (n / 5)) / 3)); // 29, but do not include numbers also divisible by 5 - remove 18 of these (69)
-  console.log(Math.floor(Math.floor(n - (n / 3)) / 5)); // 17.4, but do not include numbers also divisible by 3 - remove 27 of these (60)
-  console.log(Math.floor(Math.floor(n - ((n / 3) - (n / 5))) / 15)); // 5.8 - but remove 12 nums that are *both* divisible by 3 and 5 (75)
-  return [Math.floor(n - (n / 5)),Math.floor(n - (n / 3)),Math.floor(n - ((n / 3) - (n / 5)))];
+  console.log(~~((n - n / 5) / 3));
+  console.log(Math.abs(~~(n/5)-~~(n/3)));
+  console.log(~~(n/15));
+  console.log('~~~~~~~~~~~~~~~');
+  return [Math.floor(n - (n / 5)),~~(n/3)-~~(n/5),~~(n/15)];
 }
 
 threesAndFives(0); // return [0, 0, 0]
