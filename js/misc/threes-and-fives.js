@@ -1,12 +1,6 @@
 // https://www.codewars.com/kata/5a905291fd57772be0000039
 // **to be completed, not all tests pass**
-threesAndFives=n=> {
-  console.log(~~((n - n / 5) / 3));
-  console.log(Math.abs(~~(n/5)-~~(n/3)));
-  console.log(~~(n/15));
-  console.log('~~~~~~~~~~~~~~~');
-  return [Math.floor(n - (n / 5)),~~(n/3)-~~(n/5),~~(n/15)];
-}
+threesAndFives=n=>[~~((n-1)/3)-~~(n/15),~~((n-1)/5)-~~(n/15),~~(n/15)];
 
 threesAndFives(0); // return [0, 0, 0]
 threesAndFives(4); // return [1, 0, 0]
