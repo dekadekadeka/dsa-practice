@@ -1,6 +1,7 @@
 // https://www.codewars.com/kata/5a905291fd57772be0000039
-// **to be completed, not all tests pass**
-threesAndFives=n=>[~~((n-1)/3)-~~(n/15),~~((n-1)/5)-~~(n/15),~~(n/15)];
+// **to be completed: Your code is 62 characters: expected 62 to be at most 60**
+threesAndFives=n=>{v=~~(n/15);return[~~(--n/3)-v,~~(n/5)-v,v]}
+// threesAndFives=n=>[~~(--n/3)-~~(n/15),~~(n/5)-~~(n/15),~~(n/15)]
 
 threesAndFives(0); // return [0, 0, 0]
 threesAndFives(4); // return [1, 0, 0]
