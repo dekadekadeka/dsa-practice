@@ -37,3 +37,15 @@ find_smallest([ 8, 0, 9],"index") # return 1)
 find_smallest([ 8, 0, 9],"value") # return 0)
 find_smallest([ 1, 1, 0, 0, 1, 1],"value") # return 0)
 find_smallest([ 1, 1, 0, 0, 1, 1],"index") # return 2)
+
+# https://www.codewars.com/kata/51f9543d293a10a7a700004f
+def sorted_hashes(array, key)
+  array.collect { |h| h.sort { |a, b| a <=> b }.to_h}.sort { |a, b| a[key] <=> b[key] }
+end
+
+sorted_hashes([{'a' => 2}, {'a' => 1}], 'a') # return [{'a' => 1}, {'a' => 2}]
+sorted_hashes([{a: 1}, {a: 5}, {a: 3}], :a) # return [{a: 1}, {a: 3}, {a: 5}]
+sorted_hashes([{a: 1, b: 1}, {a: 1}, {a: 3}], :a) # return [{a: 1, b: 1}, {a: 1}, {a: 3}]
+sorted_hashes([{a: 1}, {a: 1, b: 1}, {a: 3}], :a) # return [{a: 1}, {a: 1, b: 1}, {a: 3}]
+sorted_hashes([{"id" => 2}, {"id" => 1}], "id") # return [{"id" => 1}, {"id" => 2}]
+sorted_hashes([{b: 3, a: 5}, {a: 3}, {a: 2}, {a: 9}], :a) # return [{a: 2}, {a: 3}, {a: 5, b: 3}, {a: 9}]
