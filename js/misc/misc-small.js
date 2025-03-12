@@ -13,3 +13,22 @@ function numberToPower(number, power){
 numberToPower(4, 2); // return 16
 numberToPower(10, 4); // return 10000
 numberToPower(10, 0); // return 1
+
+// I just wanted to reverse an array without using reverse().
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const reverseArr = arr => {
+  let lastIndex = arr.length - 1;
+
+  for (let i = 0; i < (arr.length / 2); i++) {
+    let temp = arr[i];
+    let last = arr[lastIndex];
+
+    arr[i] = last;
+    arr[lastIndex] = temp;
+    lastIndex--;
+  }
+
+  return arr;
+}
+
+reverseArr(arr);
