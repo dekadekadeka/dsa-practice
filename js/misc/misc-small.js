@@ -32,3 +32,17 @@ const reverseArr = arr => {
 }
 
 reverseArr(arr);
+
+// https://www.codewars.com/kata/57126304cdbf63c6770012bd
+function isDigit(s) {
+  if (1 / parseFloat(s) === -Infinity) return false;
+
+  return !isNaN(Number(s));
+  // return (1 / -Number(s.trim()) === -Infinity) ?? !isNaN(Number(s.trim()));
+}
+
+isDigit("3 4");
+isDigit(" ");
+isDigit("-0");
+isDigit("s2324");
+isDigit("-234.4");
