@@ -57,3 +57,32 @@ tidyNumber(102); // return false
 tidyNumber(9672); // return false
 tidyNumber(2789); // return true
 tidyNumber(2335); // return true
+
+// https://www.codewars.com/kata/582e0e592029ea10530009ce
+class Player {
+  constructor(name) {
+  	this.name = name;
+  }
+}
+
+let ex_names = ["a", "b", "c", "d", "c", "e", "f", "g", "h", "z"];
+let players = ex_names.map((n) => new Player(n));
+
+function duckDuckGoose(players, goose) {
+  while (goose > players.length) {
+    goose -= players.length;
+  }
+  
+  return players[goose - 1].name;
+}
+
+duckDuckGoose(players, 1); // return a
+duckDuckGoose(players, 3); // return c
+duckDuckGoose(players, 10); // return z
+duckDuckGoose(players, 20); // return z
+duckDuckGoose(players, 30); // return z
+duckDuckGoose(players, 18); // return g
+duckDuckGoose(players, 28); // return g
+duckDuckGoose(players, 12); // return b
+duckDuckGoose(players, 2); // return b
+duckDuckGoose(players, 7); // return f
