@@ -46,3 +46,14 @@ isDigit(" ");
 isDigit("-0");
 isDigit("s2324");
 isDigit("-234.4");
+
+// https://www.codewars.com/kata/5a87449ab1710171300000fd/
+function tidyNumber(n){
+  return String(n).split('').sort().join('') === String(n).split('').join(''); 
+}
+
+tidyNumber(12); // return true
+tidyNumber(102); // return false
+tidyNumber(9672); // return false
+tidyNumber(2789); // return true
+tidyNumber(2335); // return true
