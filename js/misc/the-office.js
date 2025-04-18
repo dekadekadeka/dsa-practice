@@ -56,3 +56,12 @@ boredom({
   katie: 'IS', laura: 'IS', saajid: 'canteen', alex: 'pissing about',
   john: 'retail', mr: 'pissing about'
 }); // return 'party time!!'
+
+// https://www.codewars.com/kata/57ed56657b45ef922300002b
+function broken(x){
+  return x.split('').map(d => d^1).join('');
+}
+
+broken("1"); // return "0"
+broken("10000000101101111110011001000"); // return "01111111010010000001100110111"
+broken("100010"); // return "011101"
