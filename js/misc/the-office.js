@@ -59,9 +59,20 @@ boredom({
 
 // https://www.codewars.com/kata/57ed56657b45ef922300002b
 function broken(x){
-  return x.split('').map(d => d^1).join('');
+  return x.split('').map(d => d ^ 1).join('');
 }
 
 broken("1"); // return "0"
 broken("10000000101101111110011001000"); // return "01111111010010000001100110111"
 broken("100010"); // return "011101"
+
+// https://www.codewars.com/kata/57f604a21bd4fe771b00009c
+function meeting(x){
+  const index = x.findIndex(b => b === 'O');
+
+  return index >= 0 ? index : 'None available!';
+}
+
+meeting(['X', 'O', 'X']); // return 1
+meeting(['O','X','X','X','X']); // return 0
+meeting(['X','X','X','X','X']); // return 'None available!'
