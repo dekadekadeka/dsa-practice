@@ -76,3 +76,38 @@ function meeting(x){
 meeting(['X', 'O', 'X']); // return 1
 meeting(['O','X','X','X','X']); // return 0
 meeting(['X','X','X','X','X']); // return 'None available!'
+
+// https://www.codewars.com/kata/57f6051c3ff02f3b7300008b
+function findAChair(x, need){
+  if (need === 0) return 'Game On';
+  const result = [];
+  let count = 0;
+
+  for (const room of x) {
+    let diff = Math.max(room[1] - room[0].length, 0);
+
+    if ((need - count) < diff) {
+      diff = need - count;
+    } else if (diff > need) {
+      diff = diff - (diff - need);
+    }
+
+    count += diff;
+    result.push(diff);
+
+    if (count >= need) return result;
+  }
+
+  return 'Not enough!';
+}
+
+findAChair([
+  [ 'XXX', 4 ],
+  [ 'XXX', 3 ],
+  [ 'XXXX', 6 ],
+  [ 'XXX', 7 ],
+  [ 'XXXXX', 1 ]
+], 4); // return [ 1, +0, 2, 1 ]
+findAChair([['XXX', 3], ['XXXXX', 6], ['XXXXXX', 9]], 4); // return [0, 1, 3]
+findAChair([['XXX', 1], ['XXXXXX', 6], ['X', 2], ['XXXXXX', 8], ['X', 3], ['XXX', 1]], 5); // return [0, 0, 1, 2, 2]
+findAChair([['XX', 2], ['XXXX', 6], ['XXXXX', 4]], 0); // return 'Game On'
