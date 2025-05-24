@@ -96,3 +96,13 @@ kebabize('MyCamelCasedString7'); // return 'my-camel-cased-string'
 kebabize('myCamelCasedString'); // return 'my-camel-cased-string'
 kebabize('MyCamelHas3Humps'); // return 'my-camel-cased-string'
 kebabize('CAMEL'); // return 'c-a-m-e-l'
+
+// https://www.codewars.com/kata/5951d30ce99cf2467e000013/train/javascript
+function isPythagoreanTriple(integers) {
+  const sorted = integers.sort((a, b) => a - b);
+  return Math.sqrt(sorted[0] * sorted[0] + sorted[1] * sorted[1]) === sorted[2];
+}
+
+isPythagoreanTriple([5, 12, 13]); // return true
+isPythagoreanTriple([3, 4, 5]); // return true
+isPythagoreanTriple([3, 5, 9]); // return false
