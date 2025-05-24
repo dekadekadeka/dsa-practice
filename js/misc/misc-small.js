@@ -86,3 +86,13 @@ duckDuckGoose(players, 28); // return g
 duckDuckGoose(players, 12); // return b
 duckDuckGoose(players, 2); // return b
 duckDuckGoose(players, 7); // return f
+
+// https://www.codewars.com/kata/57f8ff867a28db569e000c4a/train/javascript
+function kebabize(str) {
+  return str.replace(/\d/, '').replace(/(?<=[a-zA-Z])(?=[A-Z])/g, '-').toLowerCase();
+}
+
+kebabize('MyCamelCasedString7'); // return 'my-camel-cased-string'
+kebabize('myCamelCasedString'); // return 'my-camel-cased-string'
+kebabize('MyCamelHas3Humps'); // return 'my-camel-cased-string'
+kebabize('CAMEL'); // return 'c-a-m-e-l'
