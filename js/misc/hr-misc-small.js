@@ -100,3 +100,47 @@ function miniMaxSum(arr) {
 }
 
 // miniMaxSum([1, 2, 3, 4, 5]);
+
+// https://www.hackerrank.com/challenges/ctci-array-left-rotation/
+function rotLeft(a, d) {
+  const rot = a.splice(0, d);
+
+  return [...a, ...rot];
+}
+
+rotLeft([1, 2, 3, 4, 5], 4);
+rotLeft([41, 73, 89,  7, 10,  1, 59, 58, 84, 77, 77, 97, 58,  1, 86, 58, 26, 10, 86, 51], 10);
+
+// https://www.hackerrank.com/challenges/sock-merchant/
+function sockMerchant(n, ar) {
+  let result = 0;
+  const count = {};
+
+  for (const i of ar) {
+    count[i] ? count[i]++ : count[i] = 1;
+
+    if (count[i] % 2 === 0) result++;
+  }
+
+  return result;
+}
+
+sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]);
+
+// https://www.hackerrank.com/challenges/counting-valleys/
+function countingValleys(steps, path) {
+  let totalCount = 0;
+  let tracker = 0;
+  let lastStep;
+
+  for (const s of path) {
+    s === 'D' ? tracker-- : tracker++;
+    lastStep = s;
+    if (tracker === 0 && lastStep === 'U') totalCount++;
+  }
+
+  return totalCount;
+}
+
+countingValleys(8, 'UDDDUDUU');
+countingValleys(12, 'DDUUDDUDUUUD');
