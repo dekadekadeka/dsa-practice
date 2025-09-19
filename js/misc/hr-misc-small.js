@@ -144,3 +144,50 @@ function countingValleys(steps, path) {
 
 countingValleys(8, 'UDDDUDUU');
 countingValleys(12, 'DDUUDDUDUUUD');
+
+// https://www.hackerrank.com/challenges/jumping-on-the-clouds
+function jumpingOnClouds(c) {
+  let count = 0;
+
+  for (let i = 0; i < c.length; i++) {
+    if (c[i + 2] === 0) {
+      i ++;
+      count++;
+    } else if (c[i + 1] === 0) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+jumpingOnClouds([0, 0, 1, 0, 0, 1, 0]);
+
+// https://www.hackerrank.com/challenges/repeated-string/
+function repeatedString(s, n) {
+    if (s.indexOf('a') === -1) return 0;
+    if (s.length === 1) return n;
+
+    const aCount = s.match(/a/g).length;
+
+    return Math.floor(n / s.length) * aCount;
+}
+
+repeatedString('gfcaaaecbg', 547602); // return 164280
+repeatedString('aba', 10); // return 7
+// repeatedString('ceebbcb', 817723);
+// repeatedString('kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqadhyktagjxoanknhgilnm', 736778906400);
+
+// https://www.hackerrank.com/challenges/time-conversion/
+function timeConversion(s) {
+  return s.replace(/^(\d{2})(.+)(AM|PM)$/, (m, p1, o, s) => (
+    `${parseInt(p1) <= 12 && s === 'AM' ?
+      parseInt(p1) === 12 ? '00' : p1 :
+      parseInt(p1) === 12 ? p1 : parseInt(p1) + 12}${o}`
+    ));
+}
+
+timeConversion('07:05:45PM');
+timeConversion('12:40:22AM');
+timeConversion('05:40:22AM');
+timeConversion('12:45:54PM');
