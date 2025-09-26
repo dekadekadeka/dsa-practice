@@ -198,3 +198,19 @@ timeConversion('07:05:45PM');
 timeConversion('12:40:22AM');
 timeConversion('05:40:22AM');
 timeConversion('12:45:54PM');
+
+function gradingStudents(grades) {
+  const result = [];
+
+  for (const g of grades) {
+    // find the next highest multiple of 5
+    const nextHighest = Math.ceil(g / 5) * 5;
+    // if g is within 3 of this, do not round it up
+    // if g is less than 3 of the next multiple of 5, round up
+    g >= 38 && nextHighest - g < 3 ? result.push(nextHighest) : result.push(g);
+  }
+
+  return result;
+}
+
+gradingStudents([73, 67, 38, 33]);
