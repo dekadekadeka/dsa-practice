@@ -169,14 +169,21 @@ function repeatedString(s, n) {
     if (s.length === 1) return n;
 
     const aCount = s.match(/a/g).length;
+    let remainder = 0;
 
-    return Math.floor(n / s.length) * aCount;
+    if (Math.floor(n / s.length) < n) {
+      const diff = n - (Math.floor(n / s.length) * s.length)
+
+      remainder = (s.slice(0, diff).match(/a/g) || '').length;
+    }
+
+    return Math.floor(n / s.length) * aCount + remainder;
 }
 
 repeatedString('gfcaaaecbg', 547602); // return 164280
 repeatedString('aba', 10); // return 7
-// repeatedString('ceebbcb', 817723);
-// repeatedString('kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqadhyktagjxoanknhgilnm', 736778906400);
+repeatedString('ceebbcb', 817723);
+repeatedString('kmretasscityylpdhuwjirnqimlkcgxubxmsxpypgzxtenweirknjtasxtvxemtwxuarabssvqdnktqadhyktagjxoanknhgilnm', 736778906400);
 
 // https://www.hackerrank.com/challenges/time-conversion/
 function timeConversion(s) {
