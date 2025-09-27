@@ -215,6 +215,7 @@ function gradingStudents(grades) {
 
 gradingStudents([73, 67, 38, 33]);
 
+// https://www.hackerrank.com/challenges/apple-and-orange
 function countApplesAndOranges(s, t, a, b, apples, oranges) {
   // s is the beginning of the house
   // t is the end of the house
@@ -241,21 +242,38 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   const appleCount = countFruit(a, apples);
   const orangeCount = countFruit(b, oranges);
 
-  console.log(appleCount);
-  console.log(orangeCount);
+  // console.log(appleCount);
+  // console.log(orangeCount);
 }
 
 countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]); // return 1 1
 
+// https://www.hackerrank.com/challenges/sparse-arrays
 function matchingStrings(stringList, queries) {
-  const result = [];
+  // original solution
+  // const result = [];
 
-  // count the same string each time it comes up in the query array
-  for (const q of queries) {
-    let count = stringList.filter(a => a === q).length;
-    result.push(count);
+  // // count the same string each time it comes up in the query array
+  // for (const q of queries) {
+  //   let count = stringList.filter(a => a === q).length;
+  //   result.push(count);
+  // }
+
+  // return result;
+
+  // O(m + n) solution instead of doing basically a nested loop
+  const count = {};
+  const result = [];
+  // first, get how many times the string appears in stringList
+  for (const s of stringList) {
+    count[s] ? count[s]++ : count[s] = 1;
   }
 
+  // next, get the count per query and push into results array
+  for (const q of queries) {
+    result.push(count[q] || 0);
+  }
+  
   return result;
 }
 
