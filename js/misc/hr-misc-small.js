@@ -245,4 +245,18 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   console.log(orangeCount);
 }
 
-countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]);
+countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]); // return 1 1
+
+function matchingStrings(stringList, queries) {
+  const result = [];
+
+  // count the same string each time it comes up in the query array
+  for (const q of queries) {
+    let count = stringList.filter(a => a === q).length;
+    result.push(count);
+  }
+
+  return result;
+}
+
+matchingStrings(['aba', 'baba', 'aba', 'xzxb'], ['aba', 'xzxb', 'aba', 'aba', 'ab']); // return [2, 1, 2, 2, 0]
