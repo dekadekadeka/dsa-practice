@@ -214,3 +214,35 @@ function gradingStudents(grades) {
 }
 
 gradingStudents([73, 67, 38, 33]);
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+  // s is the beginning of the house
+  // t is the end of the house
+  // a is the apple tree to the left of the house
+  // b is the orange tree to the right of the house
+  // add a to each number in apples
+  // add b to each number in oranges
+  // count how many of these numbers are within the range of s-t
+  // print each result in a separate line
+  const countFruit = (tree, arr) => {
+    let counter = 0;
+
+    for (const i of arr) {
+      let temp = tree + i;
+
+      if (temp >= s && temp <= t) {
+        counter++;
+      }
+    }
+
+    return counter;
+  }
+
+  const appleCount = countFruit(a, apples);
+  const orangeCount = countFruit(b, oranges);
+
+  console.log(appleCount);
+  console.log(orangeCount);
+}
+
+countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]);
