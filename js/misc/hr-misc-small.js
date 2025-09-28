@@ -278,3 +278,31 @@ function matchingStrings(stringList, queries) {
 }
 
 matchingStrings(['aba', 'baba', 'aba', 'xzxb'], ['aba', 'xzxb', 'aba', 'aba', 'ab']); // return [2, 1, 2, 2, 0]
+
+// https://www.hackerrank.com/challenges/kangaroo/
+// kangaroo 1 begins at x1
+// kangaroo 2 begins at x2
+// kangaroo 1 jumps v1 units each jump
+// kangaroo 2 jumps v2 units each jump
+// check if the two kangaroos will ever be on the same step
+function kangaroo(x1, v1, x2, v2) {
+  // if the second kangaroo starts ahead, and has a faster jump rate,
+  // the first kangaroo will never catch up
+  if (x2 > x1 && v2 > v1) return 'NO';
+
+  let k1Position = x1;
+  let k2Position = x2;
+
+  const stopPoint = v1 * x2;
+  
+  while (k1Position !== k2Position) {
+    if (k1Position > stopPoint || k2Position > stopPoint) return 'NO';
+    k1Position += v1;
+    k2Position += v2;
+  }
+
+  return 'YES';
+}
+
+kangaroo(4523, 8092, 9419, 8076);
+kangaroo(0, 3, 4, 2);
