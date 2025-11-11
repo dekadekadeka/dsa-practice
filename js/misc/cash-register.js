@@ -17,7 +17,7 @@ const cashRegister = (total, cashGiven) => {
     const result = {};
     let change = Math.round((cashGiven - total) * 100) / 100;
 
-    for (i in cashMap) {
+    for (const i in cashMap) {
         if (change === 0) break;
             // i is the word form, cashMap[i] is the number itself
             while (change >= cashMap[i]) {
