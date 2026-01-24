@@ -174,3 +174,23 @@ padIt("a", 2); // return '*a*'
 padIt("a", 3); // return '**a*'
 padIt("a", 4); // return '**a**'
 padIt("a", 5); // return '***a**'
+
+// https://www.codewars.com/kata/54ff0d1f355cfd20e60001fc/train/javascript
+function factorial(n)
+{
+  if (n < 0 || n > 12) throw new RangeError;
+
+  let result = 1;
+
+  while (n > 1) {
+    result *= n;
+    n--;
+  }
+
+  return result;
+}
+
+factorial(-1);
+factorial(0);
+factorial(1);
+factorial(5);
