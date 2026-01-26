@@ -190,7 +190,111 @@ function factorial(n)
   return result;
 }
 
-factorial(-1);
+// factorial(-1);
 factorial(0);
 factorial(1);
 factorial(5);
+
+// https://www.codewars.com/kata/5514e5b77e6b2f38e0000ca9
+function upArray(arr){
+  if (!arr.length) return null;
+  if (arr.some(a => a < 0 || a > 9)) return null;
+
+  return (BigInt(arr.join('')) + 1n).toString().padStart(arr.length, '0').split('').map(num => +num);
+}
+
+upArray([]); // return null
+upArray([1, -9]); // return null
+upArray([1, 10]); // return null
+upArray([1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]); // return [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,1]
+upArray([4,3,2,5]); // return [4, 3, 2, 6]
+upArray([9,9]) // return [1, 0, 0]
+upArray([0, 7]); // return [0, 8]
+
+// https://www.codewars.com/kata/580755730b5a77650500010c
+function sortMyString(S) {
+  let evenString = '';
+  let oddString = '';
+
+  for (let i = 0; i < S.length; i++) {
+    i % 2 === 0 ? evenString += S[i] : oddString += S[i];
+  }
+
+  return `${evenString} ${oddString}`;
+}
+
+sortMyString("CodeWars"); // return "CdWr oeas"
+sortMyString("YCOLUE'VREER"); //return "YOU'RE CLEVER"
+
+// https://www.codewars.com/kata/586f6741c66d18c22800010a
+const sequenceSum = (begin, end, step) => {
+  if (end < begin) return 0;
+
+  let result = 0;
+
+  for (let i = begin; i <= end; i += step) {
+    result += i;
+  }
+
+  return result;
+};
+
+sequenceSum(2, 6, 2); // return 12
+sequenceSum(1, 5, 1); // return 15
+sequenceSum(1, 5, 3); // return 5
+
+// https://www.codewars.com/kata/5722b3f0bd5583cf44001000/train/javascript
+function giveMeFive(obj){
+  const result = [];
+
+  for (const word in obj) {
+    if (word.length === 5) {
+      result.push(word);
+    }
+
+    if (obj[word].length === 5) {
+      result.push(obj[word]);
+    }
+  }
+
+  return result;
+}
+
+giveMeFive({Our:"earth",is:"a",beautyful:"world"}); // return ["earth","world"]
+giveMeFive({Ihave:"enough", money:"to",buy:"a",car:"model"}); // return ["Ihave","money","model"]
+giveMeFive({Pears:"than",apple:"sweet"}); // return ["Pears","apple","sweet"]
+
+// https://www.codewars.com/kata/57eba158e8ca2c8aba0002a0/train/javascript
+function last(x){
+  return x.split(' ').sort((a, b) => {
+    if (a[a.length - 1] < b[b.length - 1]) return -1;
+    if (a[a.length - 1] > b[b.length - 1]) return 1;
+    return 0;
+  });
+}
+
+last('man i need a taxi up to ubud'); // return  ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
+last('what time are we climbing up the volcano'); // return  ['time', 'are', 'we', 'the', 'climbing', 'volcano', 'up', 'what']
+last('take me to semynak'); // return  ['take', 'me', 'semynak', 'to']
+
+// https://www.codewars.com/kata/57f24e6a18e9fad8eb000296/train/javascript
+function howMuchILoveYou(nbPetals) {
+  const msgs = {
+    1: "I love you",
+    2: "a little",
+    3: "a lot",
+    4: "passionately",
+    5: "madly",
+    6: "not at all",
+  }
+
+  while (nbPetals > 6) {
+    nbPetals -= 6;
+  }
+
+  return msgs[nbPetals];
+}
+
+howMuchILoveYou(7); // return "I love you"
+howMuchILoveYou(3); // return "a lot"
+howMuchILoveYou(6); // return "not at all"
