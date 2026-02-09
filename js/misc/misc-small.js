@@ -298,3 +298,68 @@ function howMuchILoveYou(nbPetals) {
 howMuchILoveYou(7); // return "I love you"
 howMuchILoveYou(3); // return "a lot"
 howMuchILoveYou(6); // return "not at all"
+
+// https://www.codewars.com/kata/57f759bb664021a30300007d
+function switcheroo(x){
+  return x.replace(/a|b/g, (l) => l === 'a' ? 'b' : 'a');
+}
+
+switcheroo('aaabcccbaaa'); // return 'bbbacccabbb'
+
+// https://www.codewars.com/kata/57faf7275c991027af000679/train/javascript
+function remove(s,n){
+  // const splitS = s.split('');
+
+  //   for (let i = 0; i < splitS.length; i++) {
+  //     if (splitS[i] === '!' && n > 0) {
+  //       splitS[i] = '';
+  //       n--;
+  //     }
+  //   }
+
+  // return splitS.join('');
+  return s.split('').map(l => {
+    if (l === '!' && n > 0) {
+      l = '';
+      n--;
+    }
+    return l;
+  }).join('');
+}
+
+remove("Hi!",1); // "Hi"
+remove("Hi!",100); // "Hi"
+remove("Hi!!!",1); // "Hi!!"
+remove("Hi!!!",100); // "Hi"
+remove("!Hi",1); // "Hi"
+remove("!Hi!",1); // "Hi!"
+remove("!Hi!",100); // "Hi"
+remove("!!!Hi !!hi!!! !hi",1); // "!!Hi !!hi!!! !hi"
+remove("!!!Hi !!hi!!! !hi",3); // "Hi !!hi!!! !hi"
+remove("!!!Hi !!hi!!! !hi",5); // "Hi hi!!! !hi"
+remove("!!!Hi !!hi!!! !hi",100); // "Hi hi hi"
+
+// https://www.codewars.com/kata/5ba38ba180824a86850000f7/train/javascript
+function solve(arr) {
+  const result = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (result[arr[i]] !== undefined) {
+      //   if num is already present, delete the one at the index and overwrite that index with the current one
+      arr[result[arr[i]]] = null;
+      result[arr[i]] = i;
+    } else {
+      // if num is not in results yet, add it along with its index
+      result[arr[i]] = i;
+    }
+  }
+
+  return arr.filter(a => a !== null);
+}
+
+solve([4,2,0,3]); // return [4,2,0,3]
+solve([3,4,4,3,6,3]); // return [4,6,3]
+solve([1,2,1,2,1,2,3]); // return [1,2,3]
+solve([1,2,3,4]); // return [1,2,3,4]
+solve([1,1,4,5,1,2,1]); // return [4,5,2,1]
+solve([1,2,1,2,1,1,3]); // return [2,1,3]
