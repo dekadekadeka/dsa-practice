@@ -363,3 +363,107 @@ solve([1,2,1,2,1,2,3]); // return [1,2,3]
 solve([1,2,3,4]); // return [1,2,3,4]
 solve([1,1,4,5,1,2,1]); // return [4,5,2,1]
 solve([1,2,1,2,1,1,3]); // return [2,1,3]
+
+// https://www.codewars.com/kata/59cfc09a86a6fdf6df0000f1/train/javascript
+function capitalize(string, indices) {
+  const splitString = string.split('');
+
+  for (let i of indices.sort((a, b) => a - b)) {
+    if (i >= splitString.length) {
+      break;
+    }
+    splitString[i] = splitString[i].toUpperCase();
+  }
+
+  return splitString.join('');
+}
+
+capitalize("abcdef",[1,2,5]);
+capitalize("abcdef",[1,2,5, 100]);
+capitalize("codewars",[1,3,5, 50]);
+capitalize("abracadabra",[2,6,9,10]); // returns 'abRacaDabRA'
+capitalize("codewarriors",[5]); // returns 'codewArriors'
+capitalize("indexinglessons",[0]); // returns 'Indexinglessons'
+
+// https://www.codewars.com/kata/5a3dd29055519e23ec000074/train/javascript
+function checkExam(array1, array2) {
+  let result = 0;
+
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] === array2[i]) {
+      result += 4;
+    } else if (array2[i] === '') {
+      continue;
+    } else {
+      result -= 1;
+    }
+  }
+
+  if (result < 0) return 0;
+  
+  return result;
+}
+
+checkExam(["a","c","a","b","a","a","a","c","c","b","c","a"], ["b","","a","","c","","b","b","c","b","b","b"]);
+checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]);
+checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]);
+
+// https://www.codewars.com/kata/55e2adece53b4cdcb900006c/train/javascript
+function race(v1, v2, g) {
+  // v1: tortoise #1 avg speed (will always start/have a lead (g) before v2)
+  // v2: tortoise #2 avg speed (will always be faster than v1)
+  // g: lead v1 has over v2
+
+  if (v1 >= v2) return null;
+
+  // basic formula: (v2 - v1) * time in hours = g
+  // 3600 seconds in an hour
+  // (v2 - v1) * time in seconds = g * 3600
+  // we need to find the time in seconds
+  // const gSeconds = g * 3600;
+  // const difference = v2 - v1;
+  // difference * t = gSeconds
+  // gSeconds / difference = t
+  // let timeInSeconds = gSeconds / difference; // returns decimal time
+  let timeInSeconds = g / (v2 - v1) * 3600; // returns decimal time
+
+  // first try - could be off by one second in either minutes or seconds due to rounding issues
+  // const hourDecimal = timeInSeconds / 3600; // get hours in decimal time
+  // const hours = Math.trunc(hourDecimal); // get the value "in front the decimal point" to get the hours
+  // const minuteDecimal = ((hourDecimal - hours) * 60); // get everything "after the decimal point" and multiply by 60 to get the minutes
+  // const minutes = Math.floor(minuteDecimal); // since minuteDecimal might still have a remainder, we need the exact minutes value with no seconds
+  // const seconds = Math.floor((minuteDecimal - minutes) * 60); // get everything "after the decimal point" again and multiply by 60 to get the seconds
+  // return in [hours, minutes, seconds] how long it will take v2 to catch up to v1
+
+  // console.log([hours, minutes, seconds]);
+  // return [hours, minutes, seconds];
+
+  // second try - count down units individually and avoid rounding outright
+  const timeMap = {
+    'hours': 3600,
+    'minutes': 60,
+    'seconds': 1,
+  };
+
+  const result = {
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  };
+
+  for (const t in timeMap) {
+    while (timeInSeconds >= timeMap[t]) {
+      result[t]++;
+      timeInSeconds -= timeMap[t];
+    }
+  }
+console.log(Object.values(result));
+  return Object.values(result);
+}
+
+race(820, 850, 550); // return [ 18, 20, 0 ]
+race(528, 825, 132); // return [ 0, 26, 40 ]
+race(80, 100, 40); // return [2, 0, 0]
+race(720, 850, 70); // return [0, 32, 18]
+race(80, 91, 37); // return [3, 21, 49]
+race(720, 850, 37); // return [0, 17, 4]
