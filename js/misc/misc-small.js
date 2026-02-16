@@ -425,7 +425,7 @@ function race(v1, v2, g) {
   // difference * t = gSeconds
   // gSeconds / difference = t
   // let timeInSeconds = gSeconds / difference; // returns decimal time
-  let timeInSeconds = g / (v2 - v1) * 3600; // returns decimal time
+  let timeInSeconds = Math.floor(g / (v2 - v1) * 3600); // returns decimal time - VERY IMPORTANT to round this down
 
   // first try - could be off by one second in either minutes or seconds due to rounding issues
   // const hourDecimal = timeInSeconds / 3600; // get hours in decimal time
@@ -439,26 +439,36 @@ function race(v1, v2, g) {
   // return [hours, minutes, seconds];
 
   // second try - count down units individually and avoid rounding outright
-  const timeMap = {
-    'hours': 3600,
-    'minutes': 60,
-    'seconds': 1,
-  };
+  // const timeMap = {
+  //   'hours': 3600,
+  //   'minutes': 60,
+  //   'seconds': 1,
+  // };
 
-  const result = {
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  };
+  // const result = {
+  //   hours: 0,
+  //   minutes: 0,
+  //   seconds: 0,
+  // };
 
-  for (const t in timeMap) {
-    while (timeInSeconds >= timeMap[t]) {
-      result[t]++;
-      timeInSeconds -= timeMap[t];
-    }
-  }
-console.log(Object.values(result));
-  return Object.values(result);
+  // for (const t in timeMap) {
+  //   while (timeInSeconds >= timeMap[t]) {
+  //     result[t]++;
+  //     timeInSeconds -= timeMap[t];
+  //   }
+  // }
+  // console.log(Object.values(result));
+  // return Object.values(result);
+
+  // third try with rounding only (most accepted answer)
+  const hours = Math.floor(timeInSeconds / 3600); // get the value "in front the decimal point" to get the hours
+  const minutes = Math.floor((timeInSeconds - (hours * 3600)) / 60); // get everything "after the decimal point", multiply by 3600 to get seconds again,
+  // and multiply by 60 to get the minutes
+  const seconds = timeInSeconds - (hours * 3600) - (minutes * 60); // get everything still remaining "after the decimal point" by subtracting hours and minutes already
+  // counted in seconds from the total time in seconds
+
+  // console.log([hours, minutes, seconds]);
+  return [hours, minutes, seconds];
 }
 
 race(820, 850, 550); // return [ 18, 20, 0 ]
