@@ -477,3 +477,58 @@ race(80, 100, 40); // return [2, 0, 0]
 race(720, 850, 70); // return [0, 32, 18]
 race(80, 91, 37); // return [3, 21, 49]
 race(720, 850, 37); // return [0, 17, 4]
+
+// https://www.codewars.com/kata/56170e844da7c6f647000063
+function peopleWithAgeDrink(old) {
+  let drink;
+
+  if (old < 14) {
+    drink = 'toddy';
+  } else if (old < 18) {
+    drink = 'coke';
+  } else if (old < 21) {
+    drink = 'beer';
+  }
+  else if (old >= 21) {
+    drink = 'whisky';
+  }
+  
+  return 'drink ' + drink;
+};
+
+peopleWithAgeDrink(14);
+
+// https://www.codewars.com/kata/577bd8d4ae2807c64b00045b/train/javascript
+class Fighter {
+  constructor(name, health, damagePerAttack) {
+    this.name = name;
+    this.damagePerAttack = damagePerAttack;
+    this.health = health;
+  }
+}
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  // fighter is dead if health <= 0
+  let currentFighter = [fighter1, fighter2].find(f => f.name === firstAttacker);
+  let nextFighter = [fighter1, fighter2].find(f => f.name !== firstAttacker);
+
+  while (nextFighter.health > 0) {
+    nextFighter.health -= currentFighter.damagePerAttack;
+
+    // swap spots here
+    if (nextFighter.health > 0) {
+      let placeholder = currentFighter;
+      currentFighter = nextFighter;
+      nextFighter = placeholder;
+    }
+  }
+console.log(currentFighter);
+
+
+  // return winning fighter's name
+  return currentFighter.name;
+}
+
+declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harald", 10, 2), "Lew"); // return 'Lew'
+declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew"); // return 'Lew'
+declareWinner(new Fighter("Harald", 20, 5), new Fighter("Harry", 5, 4), "Harry") // return "Harald"
