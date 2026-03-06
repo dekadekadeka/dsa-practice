@@ -522,7 +522,7 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
       nextFighter = placeholder;
     }
   }
-console.log(currentFighter);
+  // console.log(currentFighter);
 
 
   // return winning fighter's name
@@ -532,3 +532,53 @@ console.log(currentFighter);
 declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harald", 10, 2), "Lew"); // return 'Lew'
 declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew"); // return 'Lew'
 declareWinner(new Fighter("Harald", 20, 5), new Fighter("Harry", 5, 4), "Harry") // return "Harald"
+
+// https://www.codewars.com/kata/53d16bd82578b1fb5b00128c/train/javascript
+function grader(score) {
+  if (score > 1 || score < 0.6) return 'F';
+  
+  if (score >= 0.9) {
+    return 'A';
+  } else if (score >= 0.8) {
+    return 'B';
+  } else if (score >= 0.7) {
+    return 'C';
+  } else if (score >= 0.6) {
+    return 'D';
+  }
+}
+
+grader(0.2);
+
+// https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/javascript
+function vertMirror(strng) {
+  const result = [];
+  const split = strng.split('\n');
+
+  for (let s of split) {
+    result.push(s.split('').reverse().join(''));
+  }
+
+  return result.join('\n');
+}
+
+function horMirror(strng) {
+  const split = strng.split('\n');
+
+  return split.reverse().join('\n');
+}
+
+function oper(fct, s) {
+  return fct(s);
+}
+
+vertMirror("hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"); // return "QHdgSh\noaMDnH\nXxNNlC\nHxxvRi\nAvVTqb\nuRySvw"
+vertMirror("IzOTWE\nkkbeCM\nWuzZxM\nvDddJw\njiJyHF\nPVHfSx"); // return "EWTOzI\nMCebkk\nMxZzuW\nwJddDv\nFHyJij\nxSfHVP"
+vertMirror("cuQW\nxOuD\nfZwp\neqFx"); // return "WQuc\nDuOx\npwZf\nxFqe"
+
+horMirror("lVHt\nJVhv\nCSbg\nyeCt") // "yeCt\nCSbg\nJVhv\nlVHt"
+horMirror("njMK\ndbrZ\nLPKo\ncEYz") // "cEYz\nLPKo\ndbrZ\nnjMK"
+horMirror("QMxo\ntmFe\nWLUG\nowoq") // "owoq\nWLUG\ntmFe\nQMxo"
+horMirror("FYvi\ndZQn\nuGef\nQoSy") // "QoSy\nuGef\ndZQn\nFYvi"
+
+oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"); // return "QHdgSh\noaMDnH\nXxNNlC\nHxxvRi\nAvVTqb\nuRySvw"
