@@ -551,6 +551,7 @@ function grader(score) {
 grader(0.2);
 
 // https://www.codewars.com/kata/56dbe0e313c2f63be4000b25/train/javascript
+// Moves in squared strings I
 function vertMirror(strng) {
   const result = [];
   const split = strng.split('\n');
@@ -582,3 +583,42 @@ horMirror("QMxo\ntmFe\nWLUG\nowoq") // "owoq\nWLUG\ntmFe\nQMxo"
 horMirror("FYvi\ndZQn\nuGef\nQoSy") // "QoSy\nuGef\ndZQn\nFYvi"
 
 oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"); // return "QHdgSh\noaMDnH\nXxNNlC\nHxxvRi\nAvVTqb\nuRySvw"
+
+// https://www.codewars.com/kata/5672f4e3404d0609ec00000a/train/javascript
+const frame = (text, char) => {
+  let result = [];
+  // length of longest word
+  const maxLength = Math.max(...text.map(l => l.length));
+  // add 4 to the longest word in text
+  // to accomodate 1 char and 1 space on each side
+  // this is also the total length: the top and bottom/first and last lines
+  const totalLength = maxLength + 4;
+
+  // draw the first line
+  result.push(char.repeat(totalLength));
+  for (const word of text) {
+    // pad each word with the maxLength to make it the same length as the longest word
+    // padEnd() starts from the beginning of the string, so it will only pad shorter words
+    // and ignore those at the longest length
+    result.push(`${char} ${word.padEnd(maxLength)} ${char}`);
+  }
+
+  // draw the last line
+  result.push(char.repeat(totalLength));
+  
+  return result.join('\n');
+};
+
+// frame(['Small','frame'], '~');
+frame(["Create", "this", "kata"], '+');
+frame(["This is a very long single frame"], '-');
+
+// https://www.codewars.com/kata/56fcfad9c7e1fa2472000034/train/javascript
+function evil(n) {
+  return `It's ${(n.toString(2)).replace(/0/g, '').length % 2 === 0 ? 'Evil' : 'Odious'}!`
+}
+
+evil(135);
+evil(1);
+evil(2);
+evil(3);
