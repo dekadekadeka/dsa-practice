@@ -609,7 +609,7 @@ const frame = (text, char) => {
   return result.join('\n');
 };
 
-// frame(['Small','frame'], '~');
+frame(['Small','frame'], '~');
 frame(["Create", "this", "kata"], '+');
 frame(["This is a very long single frame"], '-');
 
@@ -622,3 +622,50 @@ evil(135);
 evil(1);
 evil(2);
 evil(3);
+
+// https://www.codewars.com/kata/57f75cc397d62fc93d000059/train/javascript
+function totalFromString(numString) {
+  let total = 0;
+
+    for (const num of numString) {
+      total += parseInt(num);
+    }
+  
+  return total;
+}
+
+function calc(x){
+  let total1 = '';
+
+  for (let i = 0; i < x.length; i++) {
+    total1 += x.charCodeAt(i).toString();
+  }
+
+  const total2 = total1.replace(/7/g, '1');
+
+  return totalFromString(total1) - totalFromString(total2);
+}
+
+calc('abcdef'); // return 6
+calc('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'); // return 96
+
+// https://www.codewars.com/kata/585b1fafe08bae9988000314/train/javascript
+function explode(s) {
+  let result = '';
+
+  for (const num of s) {
+    result += num.repeat(parseInt(num));
+  }
+
+  return result;
+}
+
+explode('312');
+explode('102269');
+
+// https://www.codewars.com/kata/559d2284b5bb6799e9000047/train/javascript
+function addLength(str) {
+  return str.split(' ').map(word => `${word} ${word.length}`);
+}
+
+addLength('you will win'); // return ["you 3", "will 4", "win 3"]
