@@ -669,3 +669,9 @@ function addLength(str) {
 }
 
 addLength('you will win'); // return ["you 3", "will 4", "win 3"]
+
+// https://www.codewars.com/kata/57cff961eca260b71900008f/train/javascript
+const isVow = a => a.map(l => /[aeiou]/g.test(String.fromCharCode(l)) ? String.fromCharCode(l) : l);
+
+isVow([118,117,120,121,117,98,122,97,120,106,104,116,113,114,113,120,106]); // return [118,"u",120,121,"u",98,122,"a",120,106,104,116,113,114,113,120,106]
+isVow([101,121,110,113,113,103,121,121,101,107,103]); // return ["e",121,110,113,113,103,121,121,"e",107,103]
