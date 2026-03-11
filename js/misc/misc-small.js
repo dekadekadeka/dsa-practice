@@ -675,3 +675,30 @@ const isVow = a => a.map(l => /[aeiou]/g.test(String.fromCharCode(l)) ? String.f
 
 isVow([118,117,120,121,117,98,122,97,120,106,104,116,113,114,113,120,106]); // return [118,"u",120,121,"u",98,122,"a",120,106,104,116,113,114,113,120,106]
 isVow([101,121,110,113,113,103,121,121,101,107,103]); // return ["e",121,110,113,113,103,121,121,"e",107,103]
+
+// https://www.codewars.com/kata/5bdcd20478d24e664d00002c/train/javascript
+function wheatFromChaff(values) {
+  let lastIndex = values.length - 1;
+
+  for (let i = 0; i < values.length; i++) {
+    // move last index to the left
+    while (values[lastIndex] > 0) {
+      lastIndex--;
+    }
+
+    if (values[i] > 0 && i < lastIndex) {
+      let temp = values[i];
+      values[i] = values[lastIndex];
+      values[lastIndex] = temp;
+    }
+  }
+
+  return values;
+}
+
+wheatFromChaff([2,-4,6,-6]); // return[-6,-4,6,2]
+wheatFromChaff([7,-3,-10]); // return[-10,-3,7]
+wheatFromChaff([7,-8,1,-2]); // return [-2,-8,1,7]
+wheatFromChaff([8,10,-6,-7,9]); // return [-7,-6,10,8,9]
+wheatFromChaff([-3,4,-10,2,-6]); // return [-3,-6,-10,2,4]
+wheatFromChaff([2,-6,-4, 1,-8,-2]); // return [-2,-6,-4,-8,1,2]
