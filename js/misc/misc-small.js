@@ -678,19 +678,42 @@ isVow([101,121,110,113,113,103,121,121,101,107,103]); // return ["e",121,110,113
 
 // https://www.codewars.com/kata/5bdcd20478d24e664d00002c/train/javascript
 function wheatFromChaff(values) {
+  // original solution - still O(n) but has unnecessary iterations
   let lastIndex = values.length - 1;
 
-  for (let i = 0; i < values.length; i++) {
-    // move last index to the left
-    while (values[lastIndex] > 0) {
-      lastIndex--;
-    }
+  // for (let i = 0; i < values.length; i++) {
+  //   // move last index to the left
+  //   while (values[lastIndex] > 0) {
+  //     lastIndex--;
+  //   }
 
-    if (values[i] > 0 && i < lastIndex) {
-      let temp = values[i];
-      values[i] = values[lastIndex];
-      values[lastIndex] = temp;
+  //   if (values[i] > 0 && i < lastIndex) {
+  //     let temp = values[i];
+  //     values[i] = values[lastIndex];
+  //     values[lastIndex] = temp;
+  //   }
+  // }
+
+  // optimized solution - two-pointer
+  let firstIndex = 0;
+
+  while (firstIndex < lastIndex) {
+    if (values[firstIndex] < 0) {
+      firstIndex++;
+      continue;
     }
+  
+    if (values[lastIndex] > 0) {
+      lastIndex--;
+      continue;
+    }
+  
+    let temp = values[firstIndex];
+    values[firstIndex] = values[lastIndex];
+    values[lastIndex] = temp;
+
+    firstIndex++;
+    lastIndex--;
   }
 
   return values;
