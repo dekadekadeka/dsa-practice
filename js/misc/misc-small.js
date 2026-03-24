@@ -725,3 +725,31 @@ wheatFromChaff([7,-8,1,-2]); // return [-2,-8,1,7]
 wheatFromChaff([8,10,-6,-7,9]); // return [-7,-6,10,8,9]
 wheatFromChaff([-3,4,-10,2,-6]); // return [-3,-6,-10,2,4]
 wheatFromChaff([2,-6,-4, 1,-8,-2]); // return [-2,-6,-4,-8,1,2]
+
+// https://www.codewars.com/kata/554a44516729e4d80b000012/train/javascript
+function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMonth) {
+  let months = 0;
+
+  let currentOldPrice = startPriceOld;
+  let currentNewPrice = startPriceNew;
+
+  let totalSavingsPerMonth = 0;
+
+  while ((currentOldPrice + totalSavingsPerMonth) - currentNewPrice < 0) {
+    months++;
+    if (months % 2 === 0) {
+      percentLossByMonth += 0.5;
+    }
+
+    currentOldPrice -= currentOldPrice * (percentLossByMonth / 100);
+    currentNewPrice -= currentNewPrice * (percentLossByMonth / 100);
+    
+    totalSavingsPerMonth += savingperMonth;
+  }
+
+  return [months, Math.round((currentOldPrice - currentNewPrice) + totalSavingsPerMonth)];
+}
+
+nbMonths(2700, 2700, 1000, 1.4); // return [0, 0]
+nbMonths(2000, 8000, 1000, 1.5); // return [6, 766]
+nbMonths(12000, 8000, 1000, 1.5); // return [0, 4000]
