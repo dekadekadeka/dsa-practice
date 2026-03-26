@@ -753,3 +753,47 @@ function nbMonths(startPriceOld, startPriceNew, savingperMonth, percentLossByMon
 nbMonths(2700, 2700, 1000, 1.4); // return [0, 0]
 nbMonths(2000, 8000, 1000, 1.5); // return [6, 766]
 nbMonths(12000, 8000, 1000, 1.5); // return [0, 4000]
+
+// https://www.codewars.com/kata/5a29a0898f27f2d9c9000058/train/javascript
+function simpleString(s){
+  return [
+    s.match(/[A-Z]/g)?.length || 0,
+    s.match(/[a-z]/g)?.length || 0,
+    s.match(/\d/g)?.length || 0,
+    s.match(/\W|_/g)?.length || 0,
+  ];
+}
+
+// simpleString(""); // return [0,0,0,0]
+// simpleString("Codewars@codewars123.com"); // return [1,18,3,2]
+simpleString("wOP:X_`)t@~>R?j.cxXz$:cwS/r"); // return [6, 9, 0, 12]
+
+// https://www.codewars.com/kata/5413759479ba273f8100003d/train/javascript
+const reverse = function(array) {
+  const result = [];
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    result.push(array[i]);
+  }
+
+  return result;
+}
+
+reverse([1,2,3]); // return [3,2,1]
+reverse([1,null,14,"two"]); // return ["two",14,null,1]
+
+// https://www.codewars.com/kata/55d410c492e6ed767000004f/train/javascript
+function vowel2index(str) {
+  const splitStr = str.split('');
+
+  for (let i = 0; i < splitStr.length; i++) {
+    if (/[aeiou]/i.test(splitStr[i])) {
+      splitStr[i] = i + 1;
+    }
+  }
+
+  return splitStr.join('');
+}
+
+vowel2index('this is my string'); // return 'th3s 6s my str15ng'
+vowel2index('Codewars is the best site in the world'); // return 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld'
