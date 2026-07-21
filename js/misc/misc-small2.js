@@ -113,3 +113,12 @@ function presses(phrase) {
 presses('LOL'); // return 9
 presses('HOW R U'); // return 13
 presses('WHERE DO U WANT 2 MEET L8R'); // return 47
+
+// https://www.codewars.com/kata/55b051fac50a3292a9000025/train/javascript
+function filterString(value) {
+  return parseInt(value.match(/\d/g).join(''));
+}
+
+filterString('123');
+filterString('a1b2c3');
+filterString('aa1bb2cc3dd');
